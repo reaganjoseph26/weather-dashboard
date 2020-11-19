@@ -28,15 +28,12 @@
                         <div class="card-body">
                             <h3 class="card-title">Search for a City:</h3>
                             <form class="form-inline active-cyan-4">
-                                <input class="form-control form-control-sm mr-3 w-80" type="text
+                                <input name="cityname" id = "city-search" class="form-control form-control-sm mr-3 w-80" type="text
                                      aria-label=" Search">
-                                <i class="fas fa-search" aria-hidden="true"></i>
+                                <button id="btn" type="submit"><i class="fas fa-search" aria-hidden="true"></i></button>
                             </form>
-                            <ul class="list-group list-group-flush border">
-                                <li class="list-group-item">PLACEHOLDER</li>
-                                <li class="list-group-item">PLACEHOLDER</li>
-                                <li class="list-group-item">PLACEHOLDER</li>
-                                <li class="list-group-item">PLACEHOLDER</li>
+                            <ul id="recent-cities" class="list-group list-group-flush border">
+                                
                             </ul>
                         </div>
                     </div>
@@ -46,6 +43,7 @@
                     <div class="card">
                         <div class="card-body">
                             <h2 id="city-name"> PLACEHOLDER<i class="fas fa-cloud"></i></h2>
+                            
                         </div>
                     </div>
 
@@ -107,6 +105,10 @@
             </div>
         </div>
     </main>
+
+    <script SRC="assets/js/config.js"></script>
+    <script src="assets/js/script.js"></script>
+    
 </body>
 
 </html>
