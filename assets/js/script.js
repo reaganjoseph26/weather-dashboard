@@ -43,7 +43,7 @@ var displayCity = function () {
     //create the li
     var cityHolderEl = document.createElement("li") // the li to be appended to ul
     cityHolderEl.classList = "list-group-item"; //class for li
-    cityHolderEl.textContent = cityInputEl.value
+    cityHolderEl.textContent = cityInputEl.value // set the li textcontent = to the content placed in the input bar
 
     //append li to ul
     recentCityEl.appendChild(cityHolderEl);
