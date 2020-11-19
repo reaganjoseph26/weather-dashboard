@@ -48,7 +48,10 @@ var displayCity = function () {
     //append li to ul
     recentCityEl.appendChild(cityHolderEl);
 
+    
+
 }
 
-searchButtonEl.addEventListener("click", displayCity);
+
+searchButtonEl.addEventListener("click", displayCity)
 
