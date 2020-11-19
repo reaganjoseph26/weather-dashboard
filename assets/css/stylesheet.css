@@ -1,0 +1,30 @@
+body {
+    background-color: rgb(49, 49, 49);
+}
+
+* {
+    box-sizing: border-box;
+  }
+
+h1 {
+    color: white;
+}
+
+main {
+    background-color: white;
+}
+
+ .col-12, .col-md-10 {
+    margin-top: 30px;
+}
+
+.col-12 {
+    margin-bottom: 30px;
+}
+
+i {
+    color: blue;
+    padding: 10px;
+}
+
+
