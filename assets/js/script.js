@@ -4,30 +4,6 @@ var recentCityEl = document.querySelector("#recent-cities") //ul element
 var searchButtonEl = document.querySelector("#btn")
 
 
-
-//create a function that handles the error handling for a city search 
-// var citySearchHnadler = function (event) {
-
-//     /* prevents the browser from sending the form's input data to a URL, 
-//    as we'll handle what happens with the form input data ourselves in JavaScript.
-//    */
-//     event.preventDeafault()
-
-//     var city = cityInputEl.textContent
-
-//     if (city) {
-//         // cityInputEl.textContent = "" // clear out input 
-//     }
-//     else {
-//         alert("Please enter a city.")
-//     }
-
-//     console.log(event)
-
-// }
-
-//display recent city searched to page under recents 
-
 var displayCity = function (event) {
     event.preventDefault()
 
@@ -40,7 +16,7 @@ var displayCity = function (event) {
 
             var convertedDate = (new Date(data.dt * 1000));
 
-            document.querySelector("#city-name").textContent = data.name + convertedDate.toDateString();
+            document.querySelector("#city-name").textContent = data.name + " " + convertedDate.toDateString();
             console.log(new Date(data.dt * 1000))
 
             console.log(data.name);
@@ -65,13 +41,27 @@ var displayCity = function (event) {
 
             var dayOneData = data.list[2]
             var dayTwoData = data.list[10]
+            var dayThreeData = data.list[18]
+            var dayFourData = data.list[24]
+            var dayFiveData = data.list[32]
 
             document.querySelector("#day1-date").textContent = (new Date(dayOneData.dt * 1000)).toDateString()
-            document.querySelector("#day1-temp").textContent = "Temp: " + Math.floor((parseInt(dayOneData.main.temp) - 273.15) * 9/5 + 32) + " F";
+            document.querySelector("#day1-temp").textContent = "Temp: " + Math.floor((parseInt(dayOneData.main.temp) - 273.15) * 9 / 5 + 32) + " F";
 
-            console.log(dayOneData)
+            document.querySelector("#day2-date").textContent = (new Date(dayTwoData.dt * 1000)).toDateString()
+            document.querySelector("#day2-temp").textContent = "Temp: " + Math.floor((parseInt(dayTwoData.main.temp) - 273.15) * 9 / 5 + 32) + " F";
 
+            document.querySelector("#day3-date").textContent = (new Date(dayThreeData.dt * 1000)).toDateString()
+            document.querySelector("#day3-temp").textContent = "Temp: " + Math.floor((parseInt(dayThreeData.main.temp) - 273.15) * 9 / 5 + 32) + " F";
+
+            document.querySelector("#day4-date").textContent = (new Date(dayFourData.dt * 1000)).toDateString()
+            document.querySelector("#day4-temp").textContent = "Temp: " + Math.floor((parseInt(dayFourData.main.temp) - 273.15) * 9 / 5 + 32) + " F";
+            
+            document.querySelector("#day5-date").textContent = (new Date(dayFiveData.dt * 1000)).toDateString()
+            document.querySelector("#day5-temp").textContent = "Temp: " + Math.floor((parseInt(dayFiveData.main.temp) - 273.15) * 9 / 5 + 32) + " F";
+            
             console.log(data)
+
         })
 
     });
