@@ -27,6 +27,16 @@ i {
     padding: 10px;
 }
 
+.custom-class {
+    list-style-type: none; 
+    margin-top: 35px;
+    
+}
+
+#current-weather {
+    padding-left: 0;
+}
+
 
 
 
