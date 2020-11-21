@@ -5,19 +5,15 @@ var recentCityEl = document.querySelector("#recent-cities") //ul element for rec
 var searchButtonEl = document.querySelector("#btn")
 var currentWeatherEl = document.querySelector("#current-weather")// ul element for current weather 
 
-// $("#recent-cities").on("click", "li", function () {
-//     displayCity($(this).text());
-
-// })
-
 var displayCity = function (event) {
 
     event.preventDefault()
 
     // fetch request to open weather for current city conditions
-    var apiUrl = "https://api.openweathermap.org/data/2.5/weather?q=" + cityInputEl.value + "&appid=" + myKey
+    var apiUrl = "https://api.openweathermap.org/data/2.5/weather?q=" + cityInputEl.value + "&appid=" + myKey 
 
     fetch(apiUrl).then(function (response) {
+        
 
         response.json().then(function (data) {
 
@@ -28,14 +24,34 @@ var displayCity = function (event) {
             //create the li
             var cityHolderEl = document.createElement("li") // the li to be appended to ul
             cityHolderEl.classList = "list-group-item"; //class for li
+
+
+            //make appended li elements clickable and return data
+            cityHolderEl.addEventListener("click", function(event) {
+    
+                displayCity(event)
+                
+            })
             cityHolderEl.textContent = cityInputEl.value // set the li textcontent = to the content placed in the input bar
+
+            
+            
 
             //append li to ul
             recentCityEl.appendChild(cityHolderEl);
 
+            cityInputEl.value = ""
+
             // Current date 
-            var convertedDate = (new Date(data.dt * 1000));
+            var convertedDate = (new Date(data.dt * 1000)) 
             document.querySelector("#city-name").textContent = data.name + " " + convertedDate.toLocaleDateString();
+
+            // document.getElementById('current-icon').src = "http://openweathermap.org/img/wn/10d@2x.png".src;
+
+            var currentIcon = document.querySelector("#current-icon")
+            currentIcon.setAttribute("src=", "http://openweathermap.org/img/wn/" + data.weather[0].icon +  "@2x.png")
+
+
 
             //create li element for current temp
 
@@ -60,6 +76,7 @@ var displayCity = function (event) {
             currentWeatherEl.appendChild(currentTemp)
             currentWeatherEl.appendChild(currentHum)
             currentWeatherEl.appendChild(currentWindSpeed)
+            
 
 
             var coordLat = data.coord.lat
@@ -68,7 +85,7 @@ var displayCity = function (event) {
             //NESTED API CALL FOR LATTITUDE AND LONGITUDE
 
             return fetch("http://api.openweathermap.org/data/2.5/uvi?lat=" + coordLat + "&lon=" + coordLon + "&appid=" + myKey)
-            // Remember to add your API key at the end
+          
         })
             .then(function (response) {
                 return response.json();
@@ -90,6 +107,8 @@ var displayCity = function (event) {
             })
 
     });
+
+    
 
 
     //5 day forecast Cards
@@ -141,9 +160,9 @@ var displayCity = function (event) {
 
 }
 
-
-
 searchButtonEl.addEventListener("click", displayCity)
+
+
 
 
 
