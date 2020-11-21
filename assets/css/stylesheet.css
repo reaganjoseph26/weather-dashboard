@@ -14,7 +14,7 @@ main {
     background-color: white;
 }
 
- .col-12, .col-md-10 {
+ .col-12, .col-md-10, h3 {
     margin-top: 30px;
 }
 
@@ -26,6 +26,7 @@ i {
     color: blue;
     padding: 10px;
 }
+
 
 
 
