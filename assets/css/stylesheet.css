@@ -10,6 +10,10 @@ h1 {
     color: white;
 }
 
+h5 {
+    font-size: 15px;
+}
+
 main {
     background-color: white;
 }
@@ -23,7 +27,7 @@ main {
 }
 
 i {
-    color: blue;
+    color:black;
     padding: 10px;
 }
 

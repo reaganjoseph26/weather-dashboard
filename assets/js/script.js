@@ -47,7 +47,7 @@ var displayCity = function (event) {
 
             // create img element for current weather icon
             var currentIcon = document.createElement("img")
-            currentIcon.setAttribute("src", "http://openweathermap.org/img/wn/" + data.weather[0].icon + "@2x.png")
+            currentIcon.setAttribute("src", "http://openweathermap.org/img/wn/" + data.weather[0].icon + ".png")
 
             currentWeatherEl.innerHTML = ""
             currentWeatherEl.appendChild(currentIcon)
@@ -131,11 +131,11 @@ var displayCity = function (event) {
             //Forecast weather icons
 
             
-            document.querySelector("#day1-icon").setAttribute("src", "http://openweathermap.org/img/wn/" + dayOneData.weather[0].icon + "@2x.png")
-            document.querySelector("#day2-icon").setAttribute("src", "http://openweathermap.org/img/wn/" + dayTwoData.weather[0].icon + "@2x.png")
-            document.querySelector("#day3-icon").setAttribute("src", "http://openweathermap.org/img/wn/" + dayThreeData.weather[0].icon + "@2x.png")
-            document.querySelector("#day4-icon").setAttribute("src", "http://openweathermap.org/img/wn/" + dayFourData.weather[0].icon + "@2x.png")
-            document.querySelector("#day5-icon").setAttribute("src", "http://openweathermap.org/img/wn/" + dayFiveData.weather[0].icon + "@2x.png")
+            document.querySelector("#day1-icon").setAttribute("src", "http://openweathermap.org/img/wn/" + dayOneData.weather[0].icon + ".png")
+            document.querySelector("#day2-icon").setAttribute("src", "http://openweathermap.org/img/wn/" + dayTwoData.weather[0].icon + ".png")
+            document.querySelector("#day3-icon").setAttribute("src", "http://openweathermap.org/img/wn/" + dayThreeData.weather[0].icon + ".png")
+            document.querySelector("#day4-icon").setAttribute("src", "http://openweathermap.org/img/wn/" + dayFourData.weather[0].icon + ".png")
+            document.querySelector("#day5-icon").setAttribute("src", "http://openweathermap.org/img/wn/" + dayFiveData.weather[0].icon + ".png")
 
             // forecast date, temperature, and humidity
 
