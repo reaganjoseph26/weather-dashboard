@@ -1,4 +1,3 @@
-
 var myKey = config.MY_KEY;
 var cityInputEl = document.querySelector("#city-search") // input bar element
 var recentCityEl = document.querySelector("#recent-cities") //ul element for recent cities
@@ -26,12 +25,22 @@ var displayCity = function (event) {
             cityHolderEl.classList = "list-group-item"; //class for li
 
 
-            //make appended li elements clickable and return data
+            // make appended li elements clickable and return data
             cityHolderEl.addEventListener("click", function (event) {
+                console.log("DOG")
+                console.log(event)
+                console.log(event.target.innerHTML)
+                //call display city fucntion with the city name from event.target.innerHTML
+                //Use inner html to populate text in searchbar
+                
+                //cityinputhtml <-- value <-- event.target.innerHTM
+                //then run display city function
 
-                displayCity(event)
+                // displayCity(event)
 
             })
+
+            
             cityHolderEl.textContent = cityInputEl.value // set the li textcontent = to the content placed in the input bar
 
 
@@ -50,6 +59,7 @@ var displayCity = function (event) {
             var currentIcon = document.createElement("img")
             currentIcon.setAttribute("src", "http://openweathermap.org/img/wn/" + data.weather[0].icon + "@2x.png")
 
+            currentWeatherEl.innerHTML = ""
             currentWeatherEl.appendChild(currentIcon)
 
 
@@ -224,10 +234,4 @@ searchButtonEl.addEventListener("click", displayCity)
 
 
 //     })
-
-
-
-
-
-
 
