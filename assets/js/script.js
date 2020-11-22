@@ -22,7 +22,7 @@ var displayCity = function (event) {
 
             //create the buuton
             var cityHolderEl = document.createElement("button") // the button to be appended to ul
-            cityHolderEl.classList = "list-group-item"; //class for button
+            cityHolderEl.classList = "list-group-item rounded?"; //class for button
             cityHolderEl.setAttribute("style", "text-align: left;")
 
             // make appended button return data
@@ -99,7 +99,7 @@ var displayCity = function (event) {
                 var currentUvIndex = document.createElement("li")
                 currentUvIndex.textContent = "UV Index: " + response.value
                 currentUvIndex.className = "custom-class";
-                currentUvIndex.setAttribute("style", "background-color: red")
+                // currentUvIndex.setAttribute("style", "background-color: red")
 
                 currentWeatherEl.appendChild(currentUvIndex);
 
@@ -119,7 +119,7 @@ var displayCity = function (event) {
 
         response.json().then(function (data) {
 
-            console.log(data)
+            console.log("5 DAY", data)
 
             //each day data set in array for morning
             var dayOneData = data.list[2]
@@ -127,6 +127,17 @@ var displayCity = function (event) {
             var dayThreeData = data.list[18]
             var dayFourData = data.list[24]
             var dayFiveData = data.list[32]
+
+            //Forecast weather icons
+
+            
+            document.querySelector("#day1-icon").setAttribute("src", "http://openweathermap.org/img/wn/" + dayOneData.weather[0].icon + "@2x.png")
+            document.querySelector("#day2-icon").setAttribute("src", "http://openweathermap.org/img/wn/" + dayTwoData.weather[0].icon + "@2x.png")
+            document.querySelector("#day3-icon").setAttribute("src", "http://openweathermap.org/img/wn/" + dayThreeData.weather[0].icon + "@2x.png")
+            document.querySelector("#day4-icon").setAttribute("src", "http://openweathermap.org/img/wn/" + dayFourData.weather[0].icon + "@2x.png")
+            document.querySelector("#day5-icon").setAttribute("src", "http://openweathermap.org/img/wn/" + dayFiveData.weather[0].icon + "@2x.png")
+
+            // forecast date, temperature, and humidity
 
             document.querySelector("#day1-date").textContent = (new Date(dayOneData.dt * 1000)).toLocaleDateString()
             document.querySelector("#day1-temp").textContent = "Temp: " + Math.floor((parseInt(dayOneData.main.temp) - 273.15) * 9 / 5 + 32) + " F";
@@ -148,8 +159,6 @@ var displayCity = function (event) {
             document.querySelector("#day5-temp").textContent = "Temp: " + Math.floor((parseInt(dayFiveData.main.temp) - 273.15) * 9 / 5 + 32) + " F";
             document.querySelector("#day5-hum").textContent = "Humidity: " + dayFiveData.main.humidity + "%";
 
-            console.log(data)
-
         })
 
     });
@@ -159,69 +168,5 @@ var displayCity = function (event) {
 searchButtonEl.addEventListener("click", displayCity)
 
 
-// var populateCity = (response) => {
-//     var convertedDate = (new Date(data.dt * 1000))
-//     document.querySelector("#city-name").textContent = data.name + " " + "(" + convertedDate.toLocaleDateString() + ")";
 
-//     //create li element for current temp
-
-//     var currentTemp = document.createElement("li")
-//     currentTemp.textContent = "Temperture: " + Math.floor((parseInt(data.main.temp) - 273.15) * 9 / 5 + 32) + " F";
-//     currentTemp.className = "custom-class";
-
-//     //create li element for current humidity
-
-//     var currentHum = document.createElement("li")
-//     currentHum.textContent = "Humidity: " + data.main.humidity + "%"
-//     currentHum.className = "custom-class";
-
-//     //create li element for current wind speed
-
-//     var currentWindSpeed = document.createElement("li")
-//     currentWindSpeed.textContent = "Wind Speed: " + data.wind.speed + " MPH"
-//     currentWindSpeed.className = "custom-class";
-
-//     //append current weather conidtions to ul
-
-//     currentWeatherEl.appendChild(currentTemp)
-//     currentWeatherEl.appendChild(currentHum)
-//     currentWeatherEl.appendChild(currentWindSpeed);
-
-//     var currentUvIndex = document.createElement("li")
-//         currentUvIndex.textContent = "UV Index: " + response.value
-//         currentUvIndex.className = "custom-class";
-//         currentUvIndex.setAttribute("style", "background-color: red")
-
-//         currentWeatherEl.appendChild(currentUvIndex);
-// };
-
-
-// // create img element for current weather icon
-// var currentIcon = document.createElement("img")
-// currentIcon.setAttribute("src", "http://openweathermap.org/img/wn/" + data.weather[0].icon + "@2x.png")
-
-// currentWeatherEl.appendChild(currentIcon)
-
-
-// var coordLat = data.coord.lat
-// var coordLon = data.coord.lon
-
-// //NESTED API CALL FOR LATTITUDE AND LONGITUDE
-
-// return fetch("http://api.openweathermap.org/data/2.5/uvi?lat=" + coordLat + "&lon=" + coordLon + "&appid=" + myKey)
-
-// })
-// .then(function (response) {
-//     return response.json();
-// })
-//     .then(function (response) {
-
-//         console.log(response)
-
-//         //create li element for current UV index
-
-
-
-
-//     })
 
