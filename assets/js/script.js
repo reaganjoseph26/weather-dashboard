@@ -18,35 +18,25 @@ var displayCity = function (event) {
 
             console.log("Original", data)
 
-            // For city history searches. Appended li elements after city is searched 
+            // For city history searches. Appended button elements after city is searched 
 
-            //create the li
-            var cityHolderEl = document.createElement("li") // the li to be appended to ul
-            cityHolderEl.classList = "list-group-item"; //class for li
+            //create the buuton
+            var cityHolderEl = document.createElement("button") // the button to be appended to ul
+            cityHolderEl.classList = "list-group-item"; //class for button
+            cityHolderEl.setAttribute("style", "text-align: left;")
 
-
-            // make appended li elements clickable and return data
+            // make appended button return data
             cityHolderEl.addEventListener("click", function (event) {
-                console.log("DOG")
-                console.log(event)
-                console.log(event.target.innerHTML)
-                //call display city fucntion with the city name from event.target.innerHTML
-                //Use inner html to populate text in searchbar
-                
-                //cityinputhtml <-- value <-- event.target.innerHTM
-                //then run display city function
 
-                // displayCity(event)
+                cityInputEl.value = event.target.innerHTML
+                //then run display city function
+                displayCity(event)
 
             })
 
-            
             cityHolderEl.textContent = cityInputEl.value // set the li textcontent = to the content placed in the input bar
 
-
-
-
-            //append li to ul
+            //append button to ul
             recentCityEl.appendChild(cityHolderEl);
 
             cityInputEl.value = ""
@@ -229,7 +219,7 @@ searchButtonEl.addEventListener("click", displayCity)
 //         console.log(response)
 
 //         //create li element for current UV index
-        
+
 
 
 
