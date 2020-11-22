@@ -3,6 +3,7 @@ var cityInputEl = document.querySelector("#city-search") // input bar element
 var recentCityEl = document.querySelector("#recent-cities") //ul element for recent cities
 var searchButtonEl = document.querySelector("#btn")
 var currentWeatherEl = document.querySelector("#current-weather")// ul element for current weather 
+var cityArr = []
 
 var displayCity = function (event) {
 
@@ -36,8 +37,20 @@ var displayCity = function (event) {
 
             cityHolderEl.textContent = cityInputEl.value // set the li textcontent = to the content placed in the input bar
 
-            //append button to ul
+            cityArr.push(cityInputEl.value)
+
+            localStorage.setItem("historyCities", JSON.stringify(cityArr));
+
+            // var cityHistory = localStorage.getItem(cityInputEl.value) 
+
+            // JSON.parse(Storage.getItem(cityInputEl.value))
+
+            // append button to ul
             recentCityEl.appendChild(cityHolderEl);
+
+
+
+
 
             cityInputEl.value = ""
 
@@ -130,7 +143,7 @@ var displayCity = function (event) {
 
             //Forecast weather icons
 
-            
+
             document.querySelector("#day1-icon").setAttribute("src", "http://openweathermap.org/img/wn/" + dayOneData.weather[0].icon + ".png")
             document.querySelector("#day2-icon").setAttribute("src", "http://openweathermap.org/img/wn/" + dayTwoData.weather[0].icon + ".png")
             document.querySelector("#day3-icon").setAttribute("src", "http://openweathermap.org/img/wn/" + dayThreeData.weather[0].icon + ".png")
@@ -163,9 +176,20 @@ var displayCity = function (event) {
 
     });
 
+};
+
+var getCity = () => {
+    cityArr = JSON.parse(localStorage.getItem("historyCities"));
+
+
+
+
 }
 
+
+getCity()
 searchButtonEl.addEventListener("click", displayCity)
+
 
 
 
