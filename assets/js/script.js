@@ -9,6 +9,7 @@ var cityArr = [] //arr for local storage
 //pull arr items from local storage 
 var getCity = function () {
     cityArr = JSON.parse(localStorage.getItem("historyCities"));
+    //if evaulates to null then set arr to empty
     if(!localStorage.getItem("historyCities")) {
         cityArr = []
     }
@@ -43,20 +44,22 @@ var displayCity = function (event) {
                 displayCity(event)
 
             })
-            recentCityEl.appendChild(cityHolderEl);
 
             cityHolderEl.textContent = cityInputEl.value // set the li textcontent = to the content placed in the input bar
-            console.log(cityInputEl.value)
+           
+            //check if cityinput is already in city ARR
             if(!cityArr.includes(cityInputEl.value)) {
                 cityArr.push(cityInputEl.value) 
                 localStorage.setItem("historyCities", JSON.stringify(cityArr))
                 getCity();
+                
             }
-        
+
             // append button to ul
-            // recentCityEl.appendChild(cityHolderEl);
+            recentCityEl.appendChild(cityHolderEl);
 
             cityInputEl.value = ""
+
 
             // Current date 
             var convertedDate = (new Date(data.dt * 1000))
