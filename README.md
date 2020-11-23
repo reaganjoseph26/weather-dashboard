@@ -23,7 +23,8 @@ Bootstrap classes
 - Set and Pull local storage 
 - Run function on eventListner "click"
 
-ScreenShot: 
+ScreenShot: ![Image](assets/Screenshot.png)
+            ![Image](assets/Screenshot2.png)
 
-Deplpyed Application Link: 
+Deplpyed Application Link: https://reaganjoseph26.github.io/weather-dashboard/
 
