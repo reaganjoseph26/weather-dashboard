@@ -9,8 +9,11 @@ var cityArr = [] //arr for local storage
 //pull arr items from local storage 
 var getCity = function () {
     cityArr = JSON.parse(localStorage.getItem("historyCities"));
+    if(!localStorage.getItem("historyCities")) {
+        cityArr = []
+    }
 
-}
+};
 
 var displayCity = function (event) {
 
@@ -40,6 +43,7 @@ var displayCity = function (event) {
                 displayCity(event)
 
             })
+            recentCityEl.appendChild(cityHolderEl);
 
             cityHolderEl.textContent = cityInputEl.value // set the li textcontent = to the content placed in the input bar
             console.log(cityInputEl.value)
@@ -50,7 +54,7 @@ var displayCity = function (event) {
             }
         
             // append button to ul
-            recentCityEl.appendChild(cityHolderEl);
+            // recentCityEl.appendChild(cityHolderEl);
 
             cityInputEl.value = ""
 
