@@ -1,9 +1,16 @@
+
 var myKey = config.MY_KEY;
 var cityInputEl = document.querySelector("#city-search") // input bar element
 var recentCityEl = document.querySelector("#recent-cities") //ul element for recent cities
 var searchButtonEl = document.querySelector("#btn")
 var currentWeatherEl = document.querySelector("#current-weather")// ul element for current weather 
-var cityArr = []
+var cityArr = [] //arr for local storage
+
+//pull arr items from local storage 
+var getCity = function () {
+    cityArr = JSON.parse(localStorage.getItem("historyCities"));
+
+}
 
 var displayCity = function (event) {
 
@@ -14,14 +21,13 @@ var displayCity = function (event) {
 
     fetch(apiUrl).then(function (response) {
 
-
         response.json().then(function (data) {
 
             console.log("Original", data)
 
             // For city history searches. Appended button elements after city is searched 
 
-            //create the buuton
+            //create the button
             var cityHolderEl = document.createElement("button") // the button to be appended to ul
             cityHolderEl.classList = "list-group-item rounded?"; //class for button
             cityHolderEl.setAttribute("style", "text-align: left;")
@@ -36,21 +42,15 @@ var displayCity = function (event) {
             })
 
             cityHolderEl.textContent = cityInputEl.value // set the li textcontent = to the content placed in the input bar
-
-            cityArr.push(cityInputEl.value)
-
-            localStorage.setItem("historyCities", JSON.stringify(cityArr));
-
-            // var cityHistory = localStorage.getItem(cityInputEl.value) 
-
-            // JSON.parse(Storage.getItem(cityInputEl.value))
-
+            console.log(cityInputEl.value)
+            if(!cityArr.includes(cityInputEl.value)) {
+                cityArr.push(cityInputEl.value) 
+                localStorage.setItem("historyCities", JSON.stringify(cityArr))
+                getCity();
+            }
+        
             // append button to ul
             recentCityEl.appendChild(cityHolderEl);
-
-
-
-
 
             cityInputEl.value = ""
 
@@ -92,7 +92,6 @@ var displayCity = function (event) {
             currentWeatherEl.appendChild(currentWindSpeed)
 
 
-
             var coordLat = data.coord.lat
             var coordLon = data.coord.lon
 
@@ -121,9 +120,6 @@ var displayCity = function (event) {
             })
 
     });
-
-
-
 
     //5 day forecast Cards
 
@@ -177,15 +173,6 @@ var displayCity = function (event) {
     });
 
 };
-
-var getCity = () => {
-    cityArr = JSON.parse(localStorage.getItem("historyCities"));
-
-
-
-
-}
-
 
 getCity()
 searchButtonEl.addEventListener("click", displayCity)
